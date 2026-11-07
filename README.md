@@ -197,6 +197,9 @@ npx skills add hertonwork/minim        # installs skills/minim-page and skills/s
 node skills/minim-page/scripts/check.mjs page.html --lighthouse
 ```
 
+With Laravel: [`examples/laravel/`](examples/laravel/) — state from the controller with `@json`, a Blade view, partials
+that bind themselves, posting the state back, and the CSP that stays strict.
+
 `skills/shader-hero/` is the second skill: the ocean under this page's hero as a 2 KB WebGL harness plus drop-in
 scenes (a raymarched ocean, a flow field of ink), inlined into a page that keeps its 100 — it starts after load,
 runs on real GPUs only, adapts its resolution, and takes its colors from the page's tokens.
