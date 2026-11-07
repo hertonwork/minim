@@ -19,6 +19,11 @@
   <img alt="MPL-2.0" src="https://img.shields.io/badge/license-MPL--2.0-blue">
 </p>
 
+<p align="center">
+  <a href="https://minim.herton.work/"><img src="docs/demo.gif" width="720" alt="The demo page: an input, buttons with command attributes and a todo list driving a live JSON state panel — with a WebGL ocean under the hero, at Lighthouse 100."></a>
+  <br><sub><a href="https://minim.herton.work/">minim.herton.work</a> — the page is the demo: one file, one request, 100/100/100/100 on PageSpeed.</sub>
+</p>
+
 ## Size matters
 
 <picture>
