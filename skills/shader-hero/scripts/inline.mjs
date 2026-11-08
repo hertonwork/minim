@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Assemble the harness with a scene and inline it into a page.
-//   node inline.mjs page.html --scene ocean          # or flow, or a path to your own scene file
+//   node inline.mjs page.html --scene ocean          # or flow, traffic, or a path to your own scene file
 //   node inline.mjs --scene ocean > hero.js          # just print the assembled script
 // The page needs <script><!--shader--></script> (or an earlier inlined copy) at the end of <body>, and the scene's
 // canvas in the hero. Minifies with esbuild when it is installed; inlines readable source otherwise.
@@ -25,7 +25,7 @@ export async function assemble(scene) {
 async function main(args) {
   const sceneArg = args[args.indexOf('--scene') + 1];
   const file = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--scene');
-  if (args.indexOf('--scene') === -1 || !sceneArg) { console.error('usage: node inline.mjs [page.html] --scene ocean|flow|path/to/scene.js'); process.exit(2); }
+  if (args.indexOf('--scene') === -1 || !sceneArg) { console.error('usage: node inline.mjs [page.html] --scene ocean|flow|traffic|path/to/scene.js'); process.exit(2); }
   const js = await assemble(sceneArg);
   if (!file) { process.stdout.write(js + '\n'); return; }
   let html = await readFile(file, 'utf8');

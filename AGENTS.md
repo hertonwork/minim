@@ -12,7 +12,7 @@ Minim is a tiny reactive library for server-rendered HTML. Two builds, one page,
 | `lite/minim.min.js`, `lite/README.md`, `lite/example.html` | built from `lite/minim.js`, `lite/README.template.md`, `lite/example.template.html` | no — `npm run build` |
 | `docs/index.template.html` | the GitHub Pages demo, styled with [sscss](https://github.com/hertonwork/sscss) utilities; `index.html` is built from it with the page's generated sscss CSS, Minim and the size chart inlined | yes (never `index.html` directly) |
 | `docs/size-chart.mjs` | the size chart + wordmark SVGs; edit the numbers there and rerun | yes |
-| `skills/shader-hero/` | the agent skill for GPU hero backgrounds: `assets/hero.js` (the harness: after-load start, GPU-only guard, adaptive resolution, reduced motion, tokens) + `assets/scenes/{ocean,flow}.js`; `docs/build-page.mjs` assembles the ocean from it | yes |
+| `skills/shader-hero/` | the agent skill for GPU hero backgrounds: `assets/hero.js` (the harness: after-load start, GPU-only guard, adaptive resolution, reduced motion, tokens) + `assets/scenes/{ocean,flow,traffic}.js` (ocean: this page; flow: sscss; traffic: server); `docs/build-page.mjs` assembles the ocean from it | yes |
 | `skills/minim-page/` | the agent skill for building pages this way; `assets/*.min.js`, `scripts/sscss.mjs` and `references/sscss.md` are copied from the builds and from the sscss package | yes (SKILL.md, design/minim references, check.mjs, inline.mjs, starter); copied files via `npm run build:skill` |
 | `test/` | `index.test.mjs` (node:test, core) and `dom.test.mjs` (Playwright, the demo page under a strict CSP) | yes |
 
