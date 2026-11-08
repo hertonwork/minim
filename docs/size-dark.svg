@@ -1,31 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="362" viewBox="0 0 880 362" role="img" aria-label="Size comparison: Minim is the smallest in both groups">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="362" viewBox="0 0 880 362" role="img" aria-label="Size comparison: minim is the smallest in both groups">
 <rect width="880" height="362" fill="transparent"/>
 <text x="24" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#e6edf3">Reactive core</text>
 <text x="856" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#9198a1" text-anchor="end">state + effects, min+gzip</text>
-<text x="188" y="73" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#e6edf3" text-anchor="end">Minim core</text>
+<text x="188" y="73" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#e6edf3" text-anchor="end">minim core</text>
 <rect x="200" y="60" width="120" height="18" rx="4" fill="#3fb950"/>
 <text x="328" y="73" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3fb950">516 B</text>
 <text x="188" y="103" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#e6edf3" text-anchor="end">usignal</text>
 <rect x="200" y="90" width="206" height="18" rx="4" fill="#3d444d"/>
-<text x="414" y="103" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">882 B  ·  1.7× Minim</text>
+<text x="414" y="103" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">882 B  ·  1.7× minim</text>
 <text x="188" y="133" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#e6edf3" text-anchor="end">VanJS</text>
 <rect x="200" y="120" width="269" height="18" rx="4" fill="#3d444d"/>
-<text x="477" y="133" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">1,153 B  ·  2.2× Minim</text>
+<text x="477" y="133" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">1,153 B  ·  2.2× minim</text>
 <text x="188" y="163" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#e6edf3" text-anchor="end">hyperactiv</text>
 <rect x="200" y="150" width="285" height="18" rx="4" fill="#3d444d"/>
-<text x="493" y="163" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">1,220 B  ·  2.4× Minim</text>
+<text x="493" y="163" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">1,220 B  ·  2.4× minim</text>
 <text x="188" y="193" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#e6edf3" text-anchor="end">nanostores</text>
 <rect x="200" y="180" width="546" height="18" rx="4" fill="#3d444d"/>
-<text x="754" y="193" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">2,339 B  ·  4.5× Minim</text>
+<text x="754" y="193" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">2,339 B  ·  4.5× minim</text>
 <text x="24" y="244" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#e6edf3">HTML-first, no JavaScript on the page</text>
 <text x="856" y="244" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#9198a1" text-anchor="end">bind data-* attributes, min+gzip</text>
-<text x="188" y="279" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#e6edf3" text-anchor="end">Minim lite (everything)</text>
+<text x="188" y="279" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#e6edf3" text-anchor="end">minim lite (everything)</text>
 <rect x="200" y="266" width="35" height="18" rx="4" fill="#3fb950"/>
 <text x="243" y="279" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3fb950">1,260 B</text>
 <text x="188" y="309" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#e6edf3" text-anchor="end">petite-vue</text>
 <rect x="200" y="296" width="194" height="18" rx="4" fill="#3d444d"/>
-<text x="402" y="309" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">7,080 B  ·  5.6× Minim</text>
+<text x="402" y="309" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">7,080 B  ·  5.6× minim</text>
 <text x="188" y="339" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#e6edf3" text-anchor="end">Alpine.js</text>
 <rect x="200" y="326" width="546" height="18" rx="4" fill="#3d444d"/>
-<text x="754" y="339" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">19,911 B  ·  16× Minim</text>
+<text x="754" y="339" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#9198a1">19,911 B  ·  16× minim</text>
 </svg>

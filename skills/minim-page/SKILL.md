@@ -2,7 +2,7 @@
 name: minim-page
 description: >-
   Build a web page that scores 100/100/100/100 on Google PageSpeed (Lighthouse) with zero external JavaScript or CSS
-  requests: one HTML file, Minim (a 1.2–2.5 KB reactive library) inlined, sscss utility classes with the page's CSS
+  requests: one HTML file, minim (a 1.2–2.5 KB reactive library) inlined, sscss utility classes with the page's CSS
   generated and inlined (≈1 KB), system fonts, native dialogs and buttons, CSS-only animation. Use this whenever someone asks for a landing page, demo, product page,
   waitlist, form, settings screen, small dashboard, prototype or "quick page" that must be fast, work with no build step,
   pass PageSpeed or Core Web Vitals, run under a strict CSP, or sit on server-rendered HTML (PHP, Rails, Django, htmx) —
@@ -10,15 +10,15 @@ description: >-
   Also use it to add interactivity (lists, toggles, counters, live previews, modals) to an existing static page.
 ---
 
-# Minim page
+# minim page
 
 A page built this way is one `.html` file. The state is a JSON tag, the HTML binds to it by key with `data-*`
-attributes, Minim is pasted inline at the end of `<body>`, the CSS is sscss — short utility classes whose rules are
+attributes, minim is pasted inline at the end of `<body>`, the CSS is sscss — short utility classes whose rules are
 generated for this page and inlined in `<head>` — plus a few lines of the page's own, fonts are the system's, images
 are inline SVG or sized `<img>`s. The browser makes one request for the document and nothing else.
 That is why it scores 100: there is nothing to block rendering, nothing to shift, nothing to download, and no framework
 to execute. It also means no bundler, no `npm install` for the page, and a strict Content-Security-Policy works because
-nothing is `eval`'d — Minim's attributes name keys, never expressions.
+nothing is `eval`'d — minim's attributes name keys, never expressions.
 
 Read `references/minim.md` for the full attribute, command and API reference, `references/sscss.md` for the class
 cheat sheet, and `references/design.md` for the visual rules before writing markup. The starter page in
@@ -64,7 +64,7 @@ Commands: `--set` (`data-key` + `value`), `--toggle`, `--inc` (`data-step`), `--
 `<dialog>`, `"toggle-popover"` on a popover — use them instead of writing a modal.
 
 **Pre-render the initial state into the markup.** Put the initial value as the text of every `data-watch` element and
-`hidden` on every `data-show` element that starts hidden. Minim then only keeps the page in sync, and nothing moves
+`hidden` on every `data-show` element that starts hidden. minim then only keeps the page in sync, and nothing moves
 when it binds — this is what keeps Cumulative Layout Shift at 0. An empty `<span data-watch="count"></span>` that
 fills with "0" after load is a layout shift; `<span data-watch="count">0</span>` is not.
 
@@ -72,7 +72,7 @@ Don't reach for JavaScript when the platform already has the thing: `<dialog>` +
 `<form>` with native validation and a real `action`, `input type=color/range/date`, `<meter>` / `<progress>`,
 `scroll-snap`, `:has()`, view transitions. A page built this way usually needs no script of its own at all; if it does
 need one (a fetch, a clipboard copy), keep it to a few lines inline at the end of `<body>` and have it write to the
-state so Minim renders the result.
+state so minim renders the result.
 
 ### 3. Style with sscss, animate with its motion utilities
 
@@ -110,9 +110,9 @@ monospace labels or emoji. The point is not restraint for its own sake: those ar
 generated, and the audits catch several of them (contrast, heading order, tap targets) anyway.
 
 Want a living hero — an ocean, a flow field of ink — without a request or a lost point? That is the **shader-hero**
-skill next to this one (`skills/shader-hero/`): a 2 KB harness that runs only on real GPUs, inlined after Minim.
+skill next to this one (`skills/shader-hero/`): a 2 KB harness that runs only on real GPUs, inlined after minim.
 
-### 4. Inline Minim
+### 4. Inline minim
 
 Pick the build:
 
@@ -161,11 +161,11 @@ file covers every one we have hit.
 - Grids are `gr` (its children get `min-width: 0`), so a `<pre>` or a long word can't overflow on phones
 - `<style data-sscss>` regenerated after the last markup edit; every class is sscss or styled in the page's own `<style>`
 - Links with real `href`s; buttons that do things
-- The JSON state tag, the bound markup with initial values pre-rendered, Minim inlined at the end of `<body>`
+- The JSON state tag, the bound markup with initial values pre-rendered, minim inlined at the end of `<body>`
 
 ## Pitfalls we hit
 
-- **Layout shift from binding.** Fixed by pre-rendering initial values (step 2) and inlining Minim at the end of
+- **Layout shift from binding.** Fixed by pre-rendering initial values (step 2) and inlining minim at the end of
   `<body>` (step 4). Reserve height for lists that start empty if the design needs it.
 - **Contrast failures on off-screen text** from opacity-based entrance animations. Transform only.
 - **Contrast failure on accent-colored small text** over a surface. sscss's default accent (`#1a7a37`) passes;

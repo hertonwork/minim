@@ -1,5 +1,5 @@
 /**
- * Minim — tiny reactive state + HTML attribute bindings.
+ * minim — tiny reactive state + HTML attribute bindings.
  * No build step, no dependencies, nothing eval'd (attributes name state KEYS, never expressions).
  *
  *   <script type="application/json" data-state="app">{"name":"","count":0}</script>
@@ -359,7 +359,7 @@ export const minim = {
     /** @deprecated JsUpdatr v2 name for `effect()`. */
     run: effect,
 };
-/** @deprecated Minim was published as JsUpdatr up to v2; this alias keeps old imports working. */
+/** @deprecated minim was published as JsUpdatr up to v2; this alias keeps old imports working. */
 export const JsUpdatr = minim;
 export default minim;
 //# sourceMappingURL=index.js.map

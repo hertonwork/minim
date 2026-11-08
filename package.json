@@ -1,7 +1,7 @@
 {
     "name": "@labs_kai/minim",
     "version": "3.0.1",
-    "description": "Minim — the smallest HTML-first reactive library. 0.5 KB core, 1.2 KB with attribute bindings. No build, no dependencies, nothing eval'd.",
+    "description": "minim — the smallest HTML-first reactive library. 0.5 KB core, 1.2 KB with attribute bindings. No build, no dependencies, nothing eval'd.",
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.js",

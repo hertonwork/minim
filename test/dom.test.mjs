@@ -1,4 +1,4 @@
-// Drives the repo's index.html (Minim, dist/index.js) in headless Chromium: npm run test:browser (needs playwright).
+// Drives the repo's index.html (minim, dist/index.js) in headless Chromium: npm run test:browser (needs playwright).
 import { chromium } from 'playwright';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';

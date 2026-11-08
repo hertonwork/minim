@@ -1,6 +1,6 @@
-# Minim with Laravel
+# minim with Laravel
 
-Minim fits Blade the way Alpine does, minus the 19 KB and minus `unsafe-eval`: the server renders the HTML, the
+minim fits Blade the way Alpine does, minus the 19 KB and minus `unsafe-eval`: the server renders the HTML, the
 state is a JSON tag, and attributes name keys. Nothing is evaluated, so a strict Content-Security-Policy stays strict.
 
 ## 1. State from the controller
@@ -57,11 +57,11 @@ public function create()
 ```
 
 Pre-render the initial values inside the `data-watch` elements (`{{ $state['seats'] }}`) and the page is complete before
-Minim runs — no flash, CLS 0.
+minim runs — no flash, CLS 0.
 
 ## 3. Partials that arrive later bind themselves
 
-Return a Blade partial from any route and insert it; Minim's MutationObserver binds it to the same state:
+Return a Blade partial from any route and insert it; minim's MutationObserver binds it to the same state:
 
 ```php
 // routes/web.php

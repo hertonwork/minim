@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Preflight for a Minim page.  node check.mjs page.html [--lighthouse]
+// Preflight for a minim page.  node check.mjs page.html [--lighthouse]
 // Static checks map onto the Lighthouse audits that cost points on a one-file page, plus whether the sscss block is
 // current. --lighthouse also serves the
 // file on a local port and runs `lighthouse` (mobile + desktop) if it is installed (npm i -g lighthouse) and a
@@ -20,7 +20,7 @@ const strip = (s) => s.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style
 const body = strip(html);
 
 // --- requests: the whole method is that there are none ---
-for (const m of html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)/gi)) fail(`external script: ${m[1]} — inline it (scripts/inline.mjs for Minim)`);
+for (const m of html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)/gi)) fail(`external script: ${m[1]} — inline it (scripts/inline.mjs for minim)`);
 for (const m of html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>/gi)) fail(`external stylesheet: ${m[0].slice(0, 80)} — inline the CSS`);
 for (const m of html.matchAll(/<link\b[^>]*rel=["']preload["'][^>]*>/gi)) fail(`preload link: ${m[0].slice(0, 80)} — a one-file page has nothing to preload`);
 if (has(/@import\s/i) || has(/fonts\.googleapis|fonts\.gstatic|typekit|use\.fontawesome/i)) fail('web font or @import — use the system font stack');
@@ -77,12 +77,12 @@ for (const m of body.matchAll(/<a\b[^>]*>/gi)) if (!/\bhref=/.test(m[0])) fail(`
 if (!has(/<script\b[^>]*type=["']application\/json["'][^>]*data-state/i)) fail('no <script type="application/json" data-state> state tag');
 else { try { for (const m of html.matchAll(/<script\b[^>]*type=["']application\/json["'][^>]*data-state[^>]*>([\s\S]*?)<\/script>/gi)) JSON.parse(m[1]); } catch (e) { fail(`state tag is not valid JSON: ${e.message}`); } }
 const inlined = /<script>(?:"use strict";)?(?:var minim=|\(\(\)=>\{)/.test(html);
-if (!inlined) fail('Minim is not inlined (run scripts/inline.mjs; the slot is <script><!--minim--></script>)');
+if (!inlined) fail('minim is not inlined (run scripts/inline.mjs; the slot is <script><!--minim--></script>)');
 else {
   const bodyEnd = html.lastIndexOf('</body>'), pos = html.search(/<script>(?:"use strict";)?(?:var minim=|\(\(\)=>\{)/);
   const inHead = pos < html.search(/<body\b/i);
-  if (inHead) notes.push('Minim is inlined in <head>; at the end of <body> it binds before first paint');
-  if (bodyEnd !== -1 && pos > bodyEnd) fail('Minim script is after </body>');
+  if (inHead) notes.push('minim is inlined in <head>; at the end of <body> it binds before first paint');
+  if (bodyEnd !== -1 && pos > bodyEnd) fail('minim script is after </body>');
 }
 let state = {};
 try { state = JSON.parse((html.match(/<script\b[^>]*data-state[^>]*>([\s\S]*?)<\/script>/i) || [])[1] || '{}'); } catch {}

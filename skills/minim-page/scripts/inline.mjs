@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Inline Minim into a page: replaces the `<script><!--minim--></script>` slot (or a previously inlined copy) with the
+// Inline minim into a page: replaces the `<script><!--minim--></script>` slot (or a previously inlined copy) with the
 // chosen build from this skill's assets.   node inline.mjs page.html [--lite]
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -12,9 +12,9 @@ const js = (await readFile(path.join(dir, '..', 'assets', build), 'utf8')).trim(
 if (js.includes('</script')) throw new Error(`${build} contains "</script" and cannot be inlined`);
 
 let html = await readFile(file, 'utf8');
-const marker = /<script>(?=<!--minim-->|"use strict";|\/\* ?Minim|var minim=|\(\(\)=>\{)[\s\S]*?<\/script>/;   // the slot, or an earlier inlined copy
+const marker = /<script>(?=<!--minim-->|"use strict";|\/\* ?[Mm]inim|var minim=|\(\(\)=>\{)[\s\S]*?<\/script>/;   // the slot, or an earlier inlined copy
 if (!marker.test(html)) {
-  console.error('no <script><!--minim--></script> slot (or earlier inlined Minim) found; add the slot at the end of <body>');
+  console.error('no <script><!--minim--></script> slot (or earlier inlined minim) found; add the slot at the end of <body>');
   process.exit(1);
 }
 html = html.replace(marker, () => `<script>${js}</script>`);

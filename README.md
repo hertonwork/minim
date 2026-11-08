@@ -28,13 +28,13 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/size-dark.svg">
-  <img src="docs/size-light.svg" width="880" alt="Minim core: 516 B — usignal 882 B, VanJS 1,153 B, hyperactiv 1,220 B, nanostores 2,339 B. Minim lite: 1,260 B — petite-vue 7,080 B, Alpine.js 19,911 B.">
+  <img src="docs/size-light.svg" width="880" alt="minim core: 516 B — usignal 882 B, VanJS 1,153 B, hyperactiv 1,220 B, nanostores 2,339 B. minim lite: 1,260 B — petite-vue 7,080 B, Alpine.js 19,911 B.">
 </picture>
 
 <sub>Same ruler for everyone: latest npm source, terser, <code>gzip -9</code>. Brotli numbers and the method are in <a href="#the-numbers">the table below</a>.</sub>
 
-> **For the look:** [sscss](https://github.com/hertonwork/sscss) — super small css — is Minim's companion: 1–3 letter
-> utility classes, generated per page (≈1 KB), dark mode and the `an-*` motion utilities built for Minim. The
+> **For the look:** [sscss](https://github.com/hertonwork/sscss) — super small css — is minim's companion: 1–3 letter
+> utility classes, generated per page (≈1 KB), dark mode and the `an-*` motion utilities built for minim. The
 > [demo page](https://minim.herton.work/) uses both; together they are under 2 KB and make one request.
 
 ## Ten seconds
@@ -54,13 +54,13 @@ Open the console and type `app.count = 100` — the page follows.
 
 ## Why
 
-- **Your server already renders the HTML.** PHP, Rails, Django, htmx — the markup exists. Minim makes it reactive in place instead of asking you to rebuild it in JavaScript.
+- **Your server already renders the HTML.** PHP, Rails, Django, htmx — the markup exists. minim makes it reactive in place instead of asking you to rebuild it in JavaScript.
 - **Paste it in `<head>` and you're done.** The lite build is one `<script>` tag of 1.2 KB. No install, no import, no bundler, no build.
-- **Nothing is `eval`'d.** Attributes name state *keys*, never expressions, so it runs under a strict Content-Security-Policy. Alpine needs `unsafe-eval`; Minim doesn't.
+- **Nothing is `eval`'d.** Attributes name state *keys*, never expressions, so it runs under a strict Content-Security-Policy. Alpine needs `unsafe-eval`; minim doesn't.
 - **Buttons work without JavaScript.** `command="--inc"` / `--toggle` / `--set` / `--push` ride the HTML Invoker Commands API that every current browser ships.
 - **Late markup binds itself.** Fragments from `fetch`, htmx swaps or server partials are picked up automatically; removed elements release their bindings.
 - **Tiny because it's narrow.** Seven attributes, five commands, dotted paths. No expression language — state names keys, CSS does the animation, `<template>` does the lists. Reach for Alpine or Vue when you need expressions.
-- **It scores 100.** [The demo page](https://minim.herton.work/) ships as one HTML file with Minim inlined: one request, Lighthouse 100/100/100/100 on mobile and desktop.
+- **It scores 100.** [The demo page](https://minim.herton.work/) ships as one HTML file with minim inlined: one request, Lighthouse 100/100/100/100 on mobile and desktop.
 
 A *minim* is the smallest unit of liquid measure. It's also a palindrome. Formerly published as JsUpdatr.
 
@@ -114,7 +114,7 @@ From PHP: `<script type="application/json" data-state="app"><?= json_encode($sta
 Keys can be dotted paths: `data-model="user.city"`, `data-watch="todos.length"`.
 
 Pre-render the initial state in the HTML (the initial text inside `data-watch` elements, `hidden` on `data-show` elements that
-start hidden): Minim then only keeps it in sync, and nothing moves on load. Markup inserted later (`fetch` +
+start hidden): minim then only keeps it in sync, and nothing moves on load. Markup inserted later (`fetch` +
 `insertAdjacentHTML`, htmx swaps, server fragments) is bound automatically; removed elements release their bindings.
 
 ### Buttons
@@ -169,11 +169,11 @@ Latest npm source of each library, terser, `gzip -9`, brotli 11 — the same pip
 
 | | minified | gzip | brotli | what's inside |
 |---|---|---|---|---|
-| **Minim core** (`reactive` + `effect`) | **868** | **516** | **471** | deep reactive state + effects |
+| **minim core** (`reactive` + `effect`) | **868** | **516** | **471** | deep reactive state + effects |
 | usignal | 1,900 | 882 | 797 | signals only |
 | VanJS core | 2,365 | 1,153 | 1,046 | state + `tags` DOM builder (UI is built in JS) |
 | hyperactiv | 2,328 | 1,220 | 1,104 | observable objects + computed |
-| **Minim lite** (everything, paste-in) | **2,385** | **1,260** | **1,131** | core + `data-*` bindings + buttons + late-DOM binding + JSON boot |
+| **minim lite** (everything, paste-in) | **2,385** | **1,260** | **1,131** | core + `data-*` bindings + buttons + late-DOM binding + JSON boot |
 | nanostores | 5,247 | 2,339 | 2,126 | stores |
 | petite-vue 0.4 (`iife`) | 16,901 | 7,080 | 6,513 | HTML directives with expressions |
 | Alpine.js 3.17 (`cdn.min.js`) | 55,935 | 19,911 | 18,029 | HTML directives with expressions, needs `unsafe-eval` |
@@ -192,9 +192,9 @@ Regenerate the chart after editing the numbers: `node docs/size-chart.mjs`. Curr
 
 ## Build a page with an agent
 
-`skills/minim-page/` is an agent skill (Claude Code, Cursor, Codex and friends) that builds one-file pages on Minim
+`skills/minim-page/` is an agent skill (Claude Code, Cursor, Codex and friends) that builds one-file pages on minim
 scoring 100/100/100/100 on PageSpeed with zero external JavaScript or CSS: a starter page styled with
-[sscss](https://github.com/hertonwork/sscss) (its generator and cheat sheet are included), both Minim builds to
+[sscss](https://github.com/hertonwork/sscss) (its generator and cheat sheet are included), both minim builds to
 inline, an inliner, a preflight checker that maps to the Lighthouse audits, and the design rules that got the demo there.
 
 ```sh

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minim lite — example</title>
+  <title>minim lite — example</title>
 
-  <!-- 1. Minim lite, pasted inline. Nothing to install, nothing to import. -->
+  <!-- 1. minim lite, pasted inline. Nothing to install, nothing to import. -->
   <script>"use strict";(()=>{let u,f;const i=new Set,m=new WeakMap,y=new WeakMap,v=Symbol(),M=(t,n)=>{const e=m.get(t)||m.set(t,new Map).get(t);return e.get(n)||e.set(n,new Set).get(n)},N=(t,n)=>{if(u){const e=M(t,n);e.add(u),u.d.add(e)}},w=(t,n)=>{m.get(t)?.get(n)?.forEach(e=>i.add(e)),i.size&&!f&&(f=1,queueMicrotask(q))},q=()=>{for(let t=0;i.size&&t<99;t++){const n=[...i];i.clear(),n.forEach(e=>e())}i.size&&console.error("minim: effect loop"),i.clear(),f=0},E=t=>{const n=()=>{e.d.forEach(s=>s.delete(e)),e.d.clear()},e=()=>{if(!e.x){n();const s=u;u=e;try{t(a)}finally{u=s}}},a=()=>{e.x=1,n()};return e.d=new Set,e(),a},g=t=>{if(!t||typeof t!="object"||t[v])return t;let n=y.get(t);return n||y.set(t,n=new Proxy(t,{get:(e,a)=>a==v?e:(N(e,a),g(e[a])),set(e,a,s){const c=a in e,o=e[a];return e[a]=s,(!c||!Object.is(o,s))&&w(e,a),c||Array.isArray(e)&&w(e,"length"),!0}})),n},p=(t,n)=>n.split(".").reduce((e,a)=>e?.[a],t),h=(t,n,e)=>{const a=n.split("."),s=a.pop();a.reduce((c,o)=>c[o],t)[s]=e},A=t=>t!==""&&!isNaN(t)?+t:t,C=(t,n)=>{const{model:e,watch:a,show:s,bind:c}=t.dataset,o=r=>E(d=>t.isConnected?r():d());if(e){const r=t.type=="checkbox",d=t.type=="number"||t.type=="range";o(()=>{const l=p(n,e)??"";r?t.checked=!!l:t.value!=l&&(t.value=l)}),t.oninput=()=>h(n,e,r?t.checked:d&&t.value!==""?t.valueAsNumber:t.value)}a&&o(()=>t.textContent=p(n,a)??""),s&&o(()=>t.hidden=!p(n,s)),c&&c.split(" ").forEach(r=>{const[d,l]=r.split(":");l&&o(()=>{const b=p(n,l);b==null||b===!1?t.removeAttribute(d):t.setAttribute(d,b===!0?"":b)})})},k=(t,n)=>{const e=new WeakSet,a=s=>s.querySelectorAll&&[s,...s.querySelectorAll("[data-model],[data-watch],[data-show],[data-bind]")].forEach(c=>c.dataset&&!e.has(c)&&(e.add(c),C(c,n)));a(t),new MutationObserver(s=>s.forEach(c=>c.addedNodes.forEach(a))).observe(t,{childList:1,subtree:1}),t.addEventListener("command",s=>{const c=s.source,o=s.command,r=c.dataset.key||c.value,d=p(n,r);o=="--set"?h(n,r,A(c.value)):o=="--toggle"?h(n,r,!d):o=="--inc"?h(n,r,(d||0)+ +(c.dataset.step||1)):o=="--push"&&d.push(A(c.value))})},x=()=>document.querySelectorAll('script[type="application/json"][data-state]').forEach(t=>k(document.getElementById(t.dataset.root)||document.body,globalThis[t.dataset.state||"state"]=g(JSON.parse(t.textContent))));globalThis.minim={reactive:g,effect:E,bind:k},document.body?x():addEventListener("DOMContentLoaded",x)})();</script>
 
   <!-- 2. Initial state as JSON. From PHP: <?= json_encode($state, JSON_HEX_TAG|JSON_HEX_AMP) ?> -->
@@ -24,7 +24,7 @@
 </head>
 <body>
 <main id="root">
-  <h2><a href="https://github.com/hertonwork/minim">Minim</a> lite</h2>
+  <h2><a href="https://github.com/hertonwork/minim">minim</a> lite</h2>
   <section>
     <article>
       <h3>Models</h3>

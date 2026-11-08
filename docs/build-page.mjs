@@ -25,4 +25,4 @@ const stray = unknown.filter((c) => !own.has(c));
 if (stray.length) throw new Error(`classes neither in sscss nor styled by the page: ${stray.join(' ')}`);
 html = html.replace('<!--sscss-->', () => `<style data-sscss>${css}</style>`);
 await writeFile(path.join(root, 'index.html'), html);
-console.log(`index.html: ${html.length} B (${(html.length / 1024).toFixed(1)} KB, ${gz(html)} B gzipped); Minim ${minim.trim().length} B; ocean ${ocean.length} B (${gz(ocean)} B gzipped); sscss ${used.size - unknown.length} utilities → ${css.length} B (${gz(css)} B gzipped)`);
+console.log(`index.html: ${html.length} B (${(html.length / 1024).toFixed(1)} KB, ${gz(html)} B gzipped); minim ${minim.trim().length} B; ocean ${ocean.length} B (${gz(ocean)} B gzipped); sscss ${used.size - unknown.length} utilities → ${css.length} B (${gz(css)} B gzipped)`);

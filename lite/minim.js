@@ -1,4 +1,4 @@
-/* Minim lite — paste in <head>. Reactive state + HTML attribute bindings in ~1.2 KB gzipped. No deps, no build, nothing eval'd.
+/* minim lite — paste in <head>. Reactive state + HTML attribute bindings in ~1.2 KB gzipped. No deps, no build, nothing eval'd.
    Attributes name state KEYS (never expressions):  data-model  data-watch  data-show  data-bind="attr:key"
    State: <script type="application/json" data-state="app">{...}</script>  ->  window.app (live, deep)
    Buttons: <button type="button" commandfor="ROOT_ID" command="--inc|--toggle|--set|--push" value="key">

@@ -7,7 +7,7 @@ description: >-
   renderers such as PageSpeed's own Chrome keep the plain hero), adapts its resolution to the frame rate, pauses
   off-screen, draws a still frame under prefers-reduced-motion, and takes its colors from the page's CSS tokens so
   dark mode follows. Use this when a page wants the look of sites with a video or canvas background (ocean, waves,
-  aurora, silk, smoke, marble, light trails, a grid floor) but must stay fast, build-free and score 100 on PageSpeed — on Minim/sscss pages or any
+  aurora, silk, smoke, marble, light trails, a grid floor) but must stay fast, build-free and score 100 on PageSpeed — on minim/sscss pages or any
   HTML page. Not for interactive 3D, games or anything that needs a library.
 ---
 
@@ -19,7 +19,7 @@ framework, and a PageSpeed score to match. This skill gets the same kind of hero
 **100/100/100/100 with one request**: a fragment shader of a few hundred bytes, a 2 KB harness that knows when *not*
 to run, and colors from the page's own tokens.
 
-The three scenes that ship here were built for the Minim, sscss and server pages and tuned there:
+The three scenes that ship here were built for the minim, sscss and server pages and tuned there:
 `assets/scenes/ocean.js` (a raymarched sea), `assets/scenes/flow.js` (domain-warped ink) and
 `assets/scenes/traffic.js` (a floor of lanes with requests and responses moving along them). They are the working
 references for writing your own.
