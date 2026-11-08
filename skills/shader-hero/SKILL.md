@@ -2,12 +2,12 @@
 name: shader-hero
 description: >-
   Give a one-file web page a living hero background — a raymarched ocean, a slow flow field of ink in the accent
-  color, or your own GLSL scene — without losing Lighthouse 100/100/100/100 or adding a request. A 2 KB WebGL harness
+  color, lanes of traffic running to a horizon, or your own GLSL scene — without losing Lighthouse 100/100/100/100 or adding a request. A 2 KB WebGL harness
   (assets/hero.js) inlined into the page: starts after load when the browser is idle, runs on real GPUs only (software
   renderers such as PageSpeed's own Chrome keep the plain hero), adapts its resolution to the frame rate, pauses
   off-screen, draws a still frame under prefers-reduced-motion, and takes its colors from the page's CSS tokens so
   dark mode follows. Use this when a page wants the look of sites with a video or canvas background (ocean, waves,
-  aurora, silk, smoke, marble) but must stay fast, build-free and score 100 on PageSpeed — on Minim/sscss pages or any
+  aurora, silk, smoke, marble, light trails, a grid floor) but must stay fast, build-free and score 100 on PageSpeed — on Minim/sscss pages or any
   HTML page. Not for interactive 3D, games or anything that needs a library.
 ---
 
@@ -19,8 +19,10 @@ framework, and a PageSpeed score to match. This skill gets the same kind of hero
 **100/100/100/100 with one request**: a fragment shader of a few hundred bytes, a 2 KB harness that knows when *not*
 to run, and colors from the page's own tokens.
 
-The two scenes that ship here were built for the Minim and sscss pages and tuned there; `assets/scenes/ocean.js`
-and `assets/scenes/flow.js` are the working references for writing a third.
+The three scenes that ship here were built for the Minim, sscss and server pages and tuned there:
+`assets/scenes/ocean.js` (a raymarched sea), `assets/scenes/flow.js` (domain-warped ink) and
+`assets/scenes/traffic.js` (a floor of lanes with requests and responses moving along them). They are the working
+references for writing your own.
 
 ## How it keeps the score (read this before changing the harness)
 
@@ -70,6 +72,12 @@ Never remove the software-renderer guard to "make the demo show up in the screen
    /* flow field */
    .flow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity 1.6s }
    .flow.on { opacity: 1 }
+   /* traffic: a band like the ocean, its height the padding plus a little, so the horizon (16% from the band's top)
+      lands just below the content at every width */
+   .hero { padding-bottom: clamp(200px, 24vw, 320px) }
+   .traffic { position: absolute; inset: auto 0 0 0; width: 100%; height: clamp(236px, 28vw, 372px); pointer-events: none; opacity: 0; transition: opacity 1.4s;
+              -webkit-mask-image: linear-gradient(transparent, #000 30%); mask-image: linear-gradient(transparent, #000 30%) }
+   .traffic.on { opacity: 1 }
    ```
 
 3. **The slot**, at the end of `<body>`, after any other inline script: `<script><!--shader--></script>`.
@@ -77,7 +85,7 @@ Never remove the software-renderer guard to "make the demo show up in the screen
 4. **Inline it:**
 
    ```sh
-   node <skill>/scripts/inline.mjs page.html --scene ocean     # or flow, or ./my-scene.js
+   node <skill>/scripts/inline.mjs page.html --scene ocean     # or flow, traffic, or ./my-scene.js
    ```
 
    Minifies with esbuild when it is installed (2.2 KB gzipped for the ocean, 2.0 KB for the flow), inlines readable
@@ -107,7 +115,7 @@ void main(){ vec2 uv=(gl_FragCoord.xy-.5*r)/r.y; … gl_FragColor=vec4(col*alpha
 })
 ```
 
-Rules that made the two scenes work:
+Rules that made the three scenes work:
 
 - **Premultiplied alpha.** The canvas is transparent over the page; output `vec4(col * a, a)`. A scene that covers
   text must fade itself where the text is (the flow field multiplies by `smoothstep` ramps on `uv`).
@@ -122,6 +130,10 @@ Rules that made the two scenes work:
   background mixed with the accent so the surface is visible at all (the ocean's night sky is `bg * .62 + sea * .38`).
 - **Contrast.** Text that sits on the canvas is audited by Lighthouse against the canvas's *CSS* background (none),
   so it passes; keep it honest by masking the canvas away from running text anyway.
+- **Thin lines need the full gradient.** Without derivatives (WebGL 1, no extension), compute how far one screen pixel
+  moves your line coordinate in *both* directions and measure distance in pixels: the traffic scene's side lanes run
+  almost flat on screen, and an x-only footprint broke them into dotted lines with rings near the horizon. Fade lines
+  out where they come closer than a few pixels instead of letting them alias.
 - GLSL ES 1.0: constant loop bounds, `mediump`, no `switch`, no dynamic array indexing.
 
 ## Pitfalls we hit
