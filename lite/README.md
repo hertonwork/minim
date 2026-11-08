@@ -1,4 +1,4 @@
-# Minim lite
+# minim lite
 
 Reactive state for server-rendered HTML in one `<script>` you paste into `<head>`. No install, no build, no import.
 Attributes name **state keys** — never JavaScript expressions — so nothing is `eval`'d and it runs under a strict CSP.
@@ -91,4 +91,4 @@ stop();                                                      // stop an effect; 
 - An effect that writes what it reads is stopped after 99 rounds with a `console.error`, not a frozen tab.
 - The one thing trimmed to hit the size: `Object.keys(state)` inside an effect is not tracked (array `.length` is). The module build tracks it.
 - Needs a browser from 2023+ (`Proxy`, optional chaining, `command` events — buttons with `command` do nothing on older browsers). No IE.
-- Want expressions, loops or templates? That's deliberately out of scope — reach for Alpine.js or Vue. Minim is for pages the server already rendered.
+- Want expressions, loops or templates? That's deliberately out of scope — reach for Alpine.js or Vue. minim is for pages the server already rendered.

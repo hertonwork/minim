@@ -6,7 +6,7 @@ import { realpathSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { gzipSync } from 'node:zlib';
 
-// sscss/motion — the animation utilities a Minim page needs, and nothing more. Transform and opacity only; every
+// sscss/motion — the animation utilities a minim page needs, and nothing more. Transform and opacity only; every
 // one of them is switched off under prefers-reduced-motion (the `reduced` rule is added once whenever any is used).
 // An entry is { css(sel), global? } : css() returns the rules for one selector, global is emitted once per page.
 
@@ -167,6 +167,11 @@ export const variants = {
   l: { wrap: (rules) => `@media(min-width:1024px){${rules}}`, doc: 'at ≥ 1024px' },
 };
 
+/** A utility that sets a visible display (f, fc, gr, bk, ib) outranks the browser's own [hidden]{display:none}, so an
+ *  element with both stays visible — minim's data-show toggles `hidden`, and a hidden flex row would show anyway. Every
+ *  page that uses such a utility gets this once; pages that don't, and the core, pay nothing. */
+export const hiddenWins = '[hidden]{display:none!important}';
+
 const esc = (c) => c.replace(/[^a-zA-Z0-9_-]/g, (ch) => '\\' + ch);
 /** The CSS rule for one class name (with or without a variant prefix), or null if not in the vocabulary. */
 export function ruleFor(cls) {
@@ -175,13 +180,13 @@ export function ruleFor(cls) {
   if (!decl) return null;
   let sel = '.' + esc(cls);
   if (m && m[1] === 'h') sel += ':hover';
-  const global = typeof decl === 'object' ? [reduced, decl.global].filter(Boolean) : [];
+  const global = typeof decl === 'object' ? [reduced, decl.global].filter(Boolean) : /display:(?!none)/.test(decl) ? [hiddenWins] : [];
   // decl forms: 'a:b' → .x{a:b} · '>*{…}' → .x>*{…} · '{…}&…' → .x{…} with & standing for .x
   const rule = typeof decl === 'object' ? decl.css(sel) : decl[0] === '>' ? sel + decl : decl[0] === '{' ? sel + decl.replaceAll('&', sel) : `${sel}{${decl}}`;
   return { rule, variant: m && m[1] !== 'h' ? m[1] : null, global };
 }
 
-/** CSS for a set of class names: core + their rules, media queries grouped, motion globals once. */
+/** CSS for a set of class names: core + their rules, media queries grouped, globals (motion, [hidden]) once. */
 export function cssFor(classes, { withCore = true } = {}) {
   const base = [], media = { m: [], l: [] }, unknown = [], globals = new Set();
   for (const c of [...new Set(classes)].sort()) {
@@ -195,7 +200,7 @@ export function cssFor(classes, { withCore = true } = {}) {
   return { css: css + [...globals].join(''), unknown };
 }
 
-/** The class names an HTML document uses: class="…" inside tags, plus the classes Minim toggles from state with
+/** The class names an HTML document uses: class="…" inside tags, plus the classes minim toggles from state with
  *  data-class="cls:key cls2:key2" (they are not in any class attribute until the state flips, but the page needs
  *  their rules). <style> and <script> contents are skipped. */
 export function classesIn(html) {

@@ -1,7 +1,7 @@
 schema_version: "1.1"
 name: cleaning-company-quote-page
 expected_outcome: |
-  A single index.html with no <script src>, no <link rel=stylesheet> and no web font; a JSON state tag; Minim inlined
+  A single index.html with no <script src>, no <link rel=stylesheet> and no web font; a JSON state tag; minim inlined
   at the end of <body>; a live quote estimate bound with data-watch that updates as square feet and frequency change;
   a real <form method="post" action="/quote"> with labelled fields; four <details> FAQ items; automatic dark mode via
   prefers-color-scheme; exactly one h1 and no skipped heading levels; the skill's check.mjs reports no FAIL lines; and

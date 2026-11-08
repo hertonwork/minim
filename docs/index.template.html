@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#1a7a37">
-  <title>Minim — reactive HTML in 1.2 KB</title>
-  <meta name="description" content="Minim binds the HTML your server already rendered to a JSON state tag. 1.2 KB, no build step, no dependencies, nothing eval'd, zero JavaScript on the page. This page is the demo.">
+  <title>minim — reactive HTML in 1.2 KB</title>
+  <meta name="description" content="minim binds the HTML your server already rendered to a JSON state tag. 1.2 KB, no build step, no dependencies, nothing eval'd, zero JavaScript on the page. This page is the demo.">
   <link rel="canonical" href="https://minim.herton.work/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a7a37'/%3E%3Ctext x='32' y='45' font-family='system-ui,sans-serif' font-weight='700' font-size='38' text-anchor='middle' fill='%23fff'%3Em%3C/text%3E%3C/svg%3E">
 
   <!-- Everything this page needs is in this file. The layout, color and motion classes are sscss (hertonwork/sscss):
        the build generates exactly the rules this page uses into <style data-sscss> below. The <style> here is only
-       what the vocabulary doesn't cover. Minim is inlined at the end of <body>. No requests for JS or CSS. -->
+       what the vocabulary doesn't cover. minim is inlined at the end of <body>. No requests for JS or CSS. -->
   <style>
     html { scroll-behavior: smooth; }
     body { font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
@@ -106,20 +106,20 @@
     <div class="wrap mx gr g8 m-c2 wl ac rel">
       <div class="an-rise">
         <h1>Reactive HTML in&nbsp;1.2&nbsp;KB.</h1>
-        <p class="t3 mt6">Minim binds the HTML your server already rendered to a JSON state tag. No build step, no dependencies, nothing <code>eval</code>'d, not one line of JavaScript on the page — and it is the smallest library that does this.</p>
+        <p class="t3 mt6">minim binds the HTML your server already rendered to a JSON state tag. No build step, no dependencies, nothing <code>eval</code>'d, not one line of JavaScript on the page — and it is the smallest library that does this.</p>
         <p class="f fw g2 mt7"><a class="r ba cw px4 py3 nu sb ib an-fx" href="https://github.com/hertonwork/minim/blob/main/lite/README.md">Paste the 1.2 KB snippet</a> <a class="r bs2 ci px4 py3 nu sb ib an-fx btn" href="#bind">See it work</a></p>
       </div>
       <div class="r2 bs p6 an-rise" aria-label="Size comparison, minified and gzipped">
         <p class="t4 b m0">Minified + gzipped</p>
-        <p class="f ae fw g4 mt3 mb4"><b class="kb ca">1.2 KB</b><span class="t1 cm">Minim lite — every binding on this page</span></p>
+        <p class="f ae fw g4 mt3 mb4"><b class="kb ca">1.2 KB</b><span class="t1 cm">minim lite — every binding on this page</span></p>
         <ol class="bars p0 m0 t1" style="list-style:none" aria-label="HTML-first libraries">
-          <li class="ca b"><span class="rt">Minim lite</span><i class="bar ba" aria-hidden="true" style="--w: 6.3"></i><b class="tn">1,260 B</b></li>
+          <li class="ca b"><span class="rt">minim lite</span><i class="bar ba" aria-hidden="true" style="--w: 6.3"></i><b class="tn">1,260 B</b></li>
           <li class="cm md"><span class="rt">petite-vue</span><i class="bar bs2" aria-hidden="true" style="--w: 35.6"></i><b class="tn nw md">7,080 B · 5.6×</b></li>
           <li class="cm md"><span class="rt">Alpine.js</span><i class="bar bs2" aria-hidden="true" style="--w: 100"></i><b class="tn nw md">19,911 B · 16×</b></li>
         </ol>
         <p class="t2 b mt5 mb2">Reactive core only</p>
         <ol class="bars p0 m0 t1" style="list-style:none" aria-label="Reactive cores">
-          <li class="ca b"><span class="rt">Minim</span><i class="bar ba" aria-hidden="true" style="--w: 42.3"></i><b class="tn">516 B</b></li>
+          <li class="ca b"><span class="rt">minim</span><i class="bar ba" aria-hidden="true" style="--w: 42.3"></i><b class="tn">516 B</b></li>
           <li class="cm md"><span class="rt">usignal</span><i class="bar bs2" aria-hidden="true" style="--w: 72.3"></i><b class="tn nw md">882 B · 1.7×</b></li>
           <li class="cm md"><span class="rt">VanJS</span><i class="bar bs2" aria-hidden="true" style="--w: 94.5"></i><b class="tn nw md">1,153 B · 2.2×</b></li>
           <li class="cm md"><span class="rt">hyperactiv</span><i class="bar bs2" aria-hidden="true" style="--w: 100"></i><b class="tn nw md">1,220 B · 2.4×</b></li>
@@ -132,7 +132,7 @@
     <div class="wrap mx">
       <div class="sy4 an-rise">
         <h2>Size matters.</h2>
-        <p>Measured the same way for everyone: the latest npm source, terser, <code>gzip -9</code>. Minim's reactive core is the smallest on the chart, and the paste-in build with every binding on this page is a fifth the size of petite-vue and a sixteenth of Alpine.</p>
+        <p>Measured the same way for everyone: the latest npm source, terser, <code>gzip -9</code>. minim's reactive core is the smallest on the chart, and the paste-in build with every binding on this page is a fifth the size of petite-vue and a sixteenth of Alpine.</p>
       </div>
       <figure class="chart mt8 an-rise">
         __CHART__
@@ -145,7 +145,7 @@
     <div class="wrap mx">
       <div class="sy4 an-rise">
         <h2>It binds by key, not by expression.</h2>
-        <p>An input with <code>data-model</code> writes to the state; anything with <code>data-watch</code> reads from it; <code>data-bind</code> mirrors values into attributes; a <code>&lt;button command="--inc"&gt;</code> changes it with no handler at all. Keys can be dotted paths. There is no expression language and nothing is evaluated, which is why Minim runs under a strict Content-Security-Policy. The panel on the right is the state of this page, live.</p>
+        <p>An input with <code>data-model</code> writes to the state; anything with <code>data-watch</code> reads from it; <code>data-bind</code> mirrors values into attributes; a <code>&lt;button command="--inc"&gt;</code> changes it with no handler at all. Keys can be dotted paths. There is no expression language and nothing is evaluated, which is why minim runs under a strict Content-Security-Policy. The panel on the right is the state of this page, live.</p>
       </div>
       <div class="gr g8 m-c2 mt8 an-rise">
         <div class="r2 bs p6">
@@ -200,7 +200,7 @@
     <div class="wrap mx gr g8 m-c2 wr ac">
       <div class="sy4 an-rise">
         <h2>Buttons without JavaScript.</h2>
-        <p>Plain <code>&lt;button command="--inc" commandfor="root"&gt;</code> elements. The browser's Invoker Commands API delivers the click as a <code>command</code> event and Minim applies it to the state — the same key the panel above shows. Nothing to wire.</p>
+        <p>Plain <code>&lt;button command="--inc" commandfor="root"&gt;</code> elements. The browser's Invoker Commands API delivers the click as a <code>command</code> event and minim applies it to the state — the same key the panel above shows. Nothing to wire.</p>
         <p class="f fw g2">
           <button type="button" commandfor="root" command="--inc" value="count" class="r px4 py2 an-fx">count +1</button>
           <button type="button" commandfor="root" command="--inc" value="count" data-step="-1" class="r px4 py2 an-fx">count −1</button>
@@ -305,7 +305,7 @@ npm i @labs_kai/minim</code></pre>
         <p class="t4 b m0">What a page needs</p>
         <p>A JSON state tag. Attributes that name keys: <code>data-model</code>, <code>data-watch</code>, <code>data-show</code>, <code>data-bind</code>, <code>data-class</code>, <code>data-each</code>, <code>data-command</code>. Buttons with <code>command</code>. That's the whole API.</p>
         <p class="t4 b m0 mt6">And for the look</p>
-        <p>This page is styled with <a href="https://sscss.herton.work/">sscss</a>: short utility classes, generated into one <code>&lt;style&gt;</code> with only the rules used, dark mode and the motion utilities included. Minim lite and the sscss core are 1.6 KB together.</p>
+        <p>This page is styled with <a href="https://sscss.herton.work/">sscss</a>: short utility classes, generated into one <code>&lt;style&gt;</code> with only the rules used, dark mode and the motion utilities included. minim lite and the sscss core are 1.6 KB together.</p>
         <p class="f fw g2 mt6"><a class="r ba cw px4 py3 nu sb ib an-fx" href="https://github.com/hertonwork/minim">Read the README</a> <a class="r bs2 ci px4 py3 nu sb ib an-fx btn" href="https://github.com/hertonwork/sscss">sscss</a></p>
       </div>
     </div>
@@ -319,7 +319,7 @@ npm i @labs_kai/minim</code></pre>
   </div>
 </footer>
 
-<!-- 2. Minim, inlined (dist/minim.min.js). Everything above is wired by the time this finishes evaluating. -->
+<!-- 2. minim, inlined (dist/minim.min.js). Everything above is wired by the time this finishes evaluating. -->
 <script>__MINIM__</script>
 
 <!-- The ocean: skills/shader-hero (harness + ocean scene), assembled, minified and inlined by the build. Starts after load, when the browser is idle. -->

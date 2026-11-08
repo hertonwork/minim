@@ -10,7 +10,7 @@ const panels = [
     title: 'Reactive core',
     note: 'state + effects, min+gzip',
     rows: [
-      ['Minim core', 516, true],
+      ['minim core', 516, true],
       ['usignal', 882],
       ['VanJS', 1153],
       ['hyperactiv', 1220],
@@ -21,7 +21,7 @@ const panels = [
     title: 'HTML-first, no JavaScript on the page',
     note: 'bind data-* attributes, min+gzip',
     rows: [
-      ['Minim lite (everything)', 1260, true],
+      ['minim lite (everything)', 1260, true],
       ['petite-vue', 7080],
       ['Alpine.js', 19911],
     ],
@@ -53,14 +53,14 @@ function chart(t) {
       const cy = y + ROW / 2;
       out.push(`<text x="${LABEL - 12}" y="${cy + 4}" ${font} font-size="13" font-weight="${hero ? 700 : 400}" fill="${t.text}" text-anchor="end">${esc(name)}</text>`);
       out.push(`<rect x="${LABEL}" y="${cy - BAR / 2}" width="${w}" height="${BAR}" rx="4" fill="${hero ? t.accent : t.bar}"/>`);
-      const ratio = hero ? '' : `  ·  ${(bytes / p.rows[0][1]).toFixed(bytes / p.rows[0][1] >= 10 ? 0 : 1)}× Minim`;
+      const ratio = hero ? '' : `  ·  ${(bytes / p.rows[0][1]).toFixed(bytes / p.rows[0][1] >= 10 ? 0 : 1)}× minim`;
       out.push(`<text x="${LABEL + w + 8}" y="${cy + 4}" ${font} font-size="12" font-weight="${hero ? 700 : 400}" fill="${hero ? t.accent : t.muted}">${fmt(bytes)}${esc(ratio)}</text>`);
       y += ROW;
     }
     y += GAP;
   }
   const H = y - GAP + PAD / 2;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Size comparison: Minim is the smallest in both groups">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Size comparison: minim is the smallest in both groups">
 <rect width="${W}" height="${H}" fill="${t.bg}"/>
 ${out.join('\n')}
 </svg>

@@ -1,6 +1,6 @@
-# Minim reference
+# minim reference
 
-Minim is a reactive library for server-rendered HTML. State is a JSON tag; attributes bind elements to it by key.
+minim is a reactive library for server-rendered HTML. State is a JSON tag; attributes bind elements to it by key.
 Nothing is evaluated: attribute values are keys or dotted paths, never expressions. Two builds, same attributes where
 they overlap: **lite** (paste-in, 1.2 KB gzipped) and the **module build** (2.5 KB gzipped, more attributes).
 
@@ -34,7 +34,7 @@ Keys are dotted paths: `user.city`, `todos.length`, `items.0.name`.
 ## Commands
 
 Buttons use the HTML Invoker Commands API: `<button type="button" commandfor="ROOT_ID" command="--inc" value="count">`.
-The browser dispatches a `command` event on the root; Minim applies it. `commandfor` must equal the bound root's `id`.
+The browser dispatches a `command` event on the root; minim applies it. `commandfor` must equal the bound root's `id`.
 Native commands (`show-modal`, `close`, `toggle-popover`, `show-popover`, `hide-popover`) are handled by the browser.
 
 | Command | Reads from the source element | Effect |
@@ -80,7 +80,7 @@ An effect that writes what it reads is stopped after ~100 rounds with a `console
 
 ## Boot timing
 
-Minim boots when the script runs if `<body>` already exists (script at the end of `<body>`, `defer`, or `type=module`);
+minim boots when the script runs if `<body>` already exists (script at the end of `<body>`, `defer`, or `type=module`);
 otherwise on `DOMContentLoaded` (script in `<head>`). End of `<body>` is the right place: binding happens before the first
 paint, so pre-rendered values and bindings agree from the first frame.
 
