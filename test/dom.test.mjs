@@ -96,6 +96,15 @@ check('native show-modal opens the dialog', await page.evaluate(() => document.g
 await page.fill('dialog [data-model="name"]', 'Dialog');
 check('dialog fields write the same state', await page.evaluate(() => app.name === 'Dialog'));
 await page.click('dialog button[command="close"]');
+// data-model on radios: a group shares one key, each radio keeps its own value (module build)
+await page.goto(`http://localhost:${port}/test/radio.html`); await page.waitForTimeout(200);
+check('radio values are left alone', await page.evaluate(() => [...document.querySelectorAll('[name="size"]')].map(r => r.value).join() === 's,m,l'));
+await page.check('[name="size"][value="l"]'); await page.waitForTimeout(20);
+check('choosing a radio stores its value', await page.evaluate(() => app.size === 'l' && document.querySelector('output').textContent === 'l'));
+await page.evaluate(() => { app.size = 's'; }); await page.waitForTimeout(20);
+check('state checks the matching radio', await page.evaluate(() => document.querySelector('[name="size"][value="s"]').checked && !document.querySelector('[name="size"][value="l"]').checked));
+await page.check('[name="crew"][value="1"]'); await page.waitForTimeout(20);
+check('radio values are coerced like --set', await page.evaluate(() => app.crew === 1));
 check('no page errors under strict CSP (no unsafe-eval)', errors.length === 0);
 if (errors.length) results.push('errors: ' + errors.join(' | '));
 

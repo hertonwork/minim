@@ -109,6 +109,9 @@ that each have their own composition, surfaces separated by tone, no gradients, 
 monospace labels or emoji. The point is not restraint for its own sake: those are the things that make a page read as
 generated, and the audits catch several of them (contrast, heading order, tap targets) anyway.
 
+One part of the page may move with intent: a picker that drives an example, pinned chapters, pulse lanes in a
+diagram, a statement that fills in as it arrives. Recipes, each within these rules, are in `references/moments.md`.
+
 Want a living hero — an ocean, a flow field of ink — without a request or a lost point? That is the **shader-hero**
 skill next to this one (`skills/shader-hero/`): a 2 KB harness that runs only on real GPUs, inlined after minim.
 
@@ -176,7 +179,10 @@ file covers every one we have hit.
 - **A head comment that mentioned `<style data-sscss>`** made an older generator replace the wrong block. Fixed in the
   generator; still, don't write tag names in comments.
 - **Stale generated CSS**: a class added to the markup after the last `--write` has no rule. `check.mjs` catches it.
-- **Class collisions**: a `.bar` nav and a `.bar` meter. Name things for what they are.
+- **Class collisions**: a `.bar` nav and a `.bar` meter. Name things for what they are. sscss's own names count: a
+  page `.wh` (for a word highlight) also matched sscss's `wh` grid ratio and blew the hero up. Check `--list` first.
+- **A reset on a class beats the spacing utilities**: `.h1, .h2 { margin: 0 }` in the page's `<style>` comes after the
+  sscss block, so `mt4` on a heading did nothing. Reset elements (`h1, h2 { margin: 0 }`), style classes for type only.
 - **`data-show` and transitions**: `hidden` can't animate. Use `data-class` with a transition when it should.
 - **Editing list items with `data-model="$"`** re-renders the list on every keystroke (the list effect reads every
   index). Make items objects and bind `$.field`; the list re-renders only on add/remove.

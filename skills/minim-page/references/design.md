@@ -81,6 +81,8 @@ Build the page with motion off; it has to look finished still. Then:
 - Entrance motion: `an-rise` (`animation-timeline: view()` inside `@supports`), **transform only, never opacity**
   (faded off-screen text fails the contrast audit).
 - Every `an-*` is off under `prefers-reduced-motion`; the generator adds that rule once.
+- One moment per page at most (`moments.md`): a picker driving an example, pinned chapters, pulse lanes, a
+  statement that fills in. It shows how the subject works; it is not decoration.
 
 ## Content
 

@@ -8,7 +8,7 @@
 //   - a slow first frame (> 40 ms) or data-saver mode also bows out; `#<hash>` in the URL forces the scene on
 //   - adaptive resolution: frame times are measured for the first second and the canvas steps down until ~60 fps holds
 //   - pauses off-screen and when the tab is hidden; a single still frame under prefers-reduced-motion
-//   - colors come from the page's tokens, so dark mode follows for free
+//   - colors come from the page's tokens, so dark mode follows for free (the system setting or data-theme on <html>)
 const init = () => {
   const scene = /*SCENE*/null;
   if (!scene) return;
@@ -34,9 +34,11 @@ const init = () => {
 
   // tokens → uniforms: scene.theme gets a reader for CSS custom properties as [r, g, b] in 0–1, and whether it is dark
   const rgb = (s) => { const m = (s || '').trim().match(/^#([0-9a-f]{3,6})$/i); if (!m) return [0, 0, 0]; const x = m[1].length === 3 ? [...m[1]].map((c) => c + c).join('') : m[1]; return [0, 2, 4].map((i) => parseInt(x.slice(i, i + 2), 16) / 255); };
-  const dark = matchMedia('(prefers-color-scheme: dark)');
-  const theme = () => { const cs = getComputedStyle(document.documentElement); scene.theme((name) => rgb(cs.getPropertyValue(name)), dark.matches, (n, v) => (v.length === 3 ? gl.uniform3fv(u(n), v) : gl.uniform1f(u(n), v))); };
-  theme(); dark.addEventListener('change', theme);
+  // dark follows the page's own switch first (data-theme="dark" | "light" on <html>), then the system setting
+  const root = document.documentElement, dark = matchMedia('(prefers-color-scheme: dark)');
+  const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : dark.matches);
+  const theme = () => { const cs = getComputedStyle(root); scene.theme((name) => rgb(cs.getPropertyValue(name)), isDark(), (n, v) => (v.length === 3 ? gl.uniform3fv(u(n), v) : gl.uniform1f(u(n), v))); };
+  theme();
 
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let scale = scene.scale || 0.5, w = 0, h = 0, visible = true, raf = 0, start = performance.now(), probe = !force, last = 0, slow = 0, n = 0;
@@ -55,6 +57,10 @@ const init = () => {
     if (!still && visible && !document.hidden) raf = requestAnimationFrame(frame);
   };
   const go = () => { if (!raf) raf = requestAnimationFrame(frame); };
+  // a theme switch repaints, including the single still frame under reduced motion
+  const retheme = () => { theme(); go(); };
+  dark.addEventListener('change', retheme);
+  new MutationObserver(retheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   new IntersectionObserver((e) => { visible = e[0].isIntersecting; if (visible) go(); }).observe(canvas);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) go(); });
   addEventListener('resize', go);
