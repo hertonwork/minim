@@ -103,7 +103,7 @@ From PHP: `<script type="application/json" data-state="app"><?= json_encode($sta
 
 | Attribute | On | Does |
 |---|---|---|
-| `data-model="key"` | `input`, `textarea`, `select` | Two-way. Checkboxes use `checked`; `type=number`/`range` store Numbers. |
+| `data-model="key"` | `input`, `textarea`, `select` | Two-way. Checkboxes use `checked`; `type=number`/`range` store Numbers. Radios sharing a key check the one whose `value` matches and store the chosen value, coerced like `--set` (module build). |
 | `data-watch="key"` | any element | Sets `textContent` to the value. |
 | `data-show="key"` | any element | Toggles the `hidden` attribute (truthy = shown). |
 | `data-bind="attr:key --var:key"` | any element | Mirrors values into attributes, or into CSS custom properties when the name starts with `--`. `false`/`null` removes, `true` sets empty. |

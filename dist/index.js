@@ -207,16 +207,20 @@ function bindElement(el, state, signal, sc) {
     if (d.model != null) { // two-way, type-aware
         const input = el;
         const isCheck = input.type === 'checkbox';
+        const isRadio = input.type === 'radio'; // a group shares one key; each radio keeps its own value
         const isNum = input.type === 'number' || input.type === 'range';
-        const read = () => (isCheck ? input.checked : isNum && input.value !== '' ? input.valueAsNumber : input.value);
+        const read = () => (isCheck ? input.checked : isRadio ? coerce(input.value) : isNum && input.value !== '' ? input.valueAsNumber : input.value);
         effect(() => {
             const v = getPath(state, d.model, sc) ?? '';
             if (isCheck)
                 input.checked = !!v;
+            else if (isRadio)
+                input.checked = String(v) === input.value;
             else if (input.value !== String(v))
                 input.value = String(v);
         }, { signal });
-        input.addEventListener('input', () => setPath(state, d.model, read(), sc), { signal });
+        input.addEventListener('input', () => { if (!isRadio || input.checked)
+            setPath(state, d.model, read(), sc); }, { signal });
     }
     if (d.watch != null)
         effect(() => { el.textContent = String(getPath(state, d.watch, sc) ?? ''); }, { signal });

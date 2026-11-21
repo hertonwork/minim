@@ -22,6 +22,7 @@ Contents: State · Attributes · Commands · List scope · JavaScript API · Boo
 | Attribute | On | Does | Build |
 |---|---|---|---|
 | `data-model="key"` | `input`, `textarea`, `select` | Two-way. Checkbox ↔ boolean via `checked`; `type=number`/`range` store Numbers (an empty or half-typed field stores `''` and is not clobbered); everything else strings. | both |
+| `data-model="key"` on `type=radio` | each radio of a group, same key | The radio whose `value` equals the key's value is checked; choosing one stores its value, coerced like `--set` (`"2"` → `2`, `"true"` → `true`). Each radio keeps its own `value`. | module |
 | `data-watch="key"` | any | `textContent = String(value ?? '')`. Pre-render the initial value as the element's text. | both |
 | `data-show="key"` | any | `hidden = !value`. Pre-render `hidden` when the initial value is falsy. | both |
 | `data-bind="attr:key attr2:key2"` | any | `setAttribute(attr, value)`; `false`/`null` removes the attribute, `true` sets it empty. Names starting with `--` set CSS custom properties on the element instead (module build). | both (`--` module) |

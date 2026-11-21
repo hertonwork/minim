@@ -130,6 +130,10 @@ Rules that made the three scenes work:
   background mixed with the accent so the surface is visible at all (the ocean's night sky is `bg * .62 + sea * .38`).
 - **Contrast.** Text that sits on the canvas is audited by Lighthouse against the canvas's *CSS* background (none),
   so it passes; keep it honest by masking the canvas away from running text anyway.
+  On a page whose hero text fills the first screen (a hero at `100svh` with the content centred), give the hero the
+  band's padding at the bottom as well, or the ocean and traffic bands climb behind the lead paragraph.
+- **A theme switch.** The harness reads `data-theme="dark" | "light"` on `<html>` before the system setting and
+  re-reads the tokens when either changes, so a page with its own light/dark toggle repaints the scene to match.
 - **Thin lines need the full gradient.** Without derivatives (WebGL 1, no extension), compute how far one screen pixel
   moves your line coordinate in *both* directions and measure distance in pixels: the traffic scene's side lanes run
   almost flat on screen, and an x-only footprint broke them into dotted lines with rings near the horizon. Fade lines

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>minim radio fixture</title></head>
+<body>
+<main id="main">
+  <fieldset>
+    <legend>Size</legend>
+    <label><input type="radio" name="size" value="s" data-model="size"> Small</label>
+    <label><input type="radio" name="size" value="m" data-model="size" checked> Medium</label>
+    <label><input type="radio" name="size" value="l" data-model="size"> Large</label>
+  </fieldset>
+  <fieldset>
+    <legend>Crew</legend>
+    <label><input type="radio" name="crew" value="1" data-model="crew"> One</label>
+    <label><input type="radio" name="crew" value="2" data-model="crew" checked> Two</label>
+  </fieldset>
+  <output data-watch="size">m</output>
+</main>
+<script type="application/json" data-state="app" data-root="main">{"size":"m","crew":2}</script>
+<script src="/dist/minim.min.js"></script>
+</body>
+</html>
